@@ -1,0 +1,167 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="?android:colorPrimary"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/tool"
+            layout="@layout/bar_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        </include>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/whole_layout1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/whole_layout"
+                        app:layout_constraintTop_toBottomOf="@+id/tool"
+                        tools:ignore="NotSibling">
+
+                        <TextView
+                            android:id="@+id/mainPageDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="November 3, 2020"
+                            android:paddingLeft="10dp"
+                            android:textSize="25dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/grey"
+                            android:paddingBottom="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/portfolio_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/lightgrey"
+                            android:gravity="left|center_vertical"
+                            android:text="PORTFOLIO"
+                            android:paddingLeft="10dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="@id/mainPageDate"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/mainPageDate" />
+
+                        <TextView
+                            android:id="@+id/netWorth_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Net Worth"
+                            android:textColor="@color/black"
+                            android:paddingLeft="10dp"
+                            android:textSize="23dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/portfolio_title" />
+
+                        <TextView
+                            android:id="@+id/netWorth_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="200000.0"
+                            android:textStyle="bold"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/netWorth_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/portfolio_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/netWorth_value"
+                            tools:layout_editor_absoluteX="0dp" />
+
+                        <TextView
+                            android:id="@+id/fav_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@color/lightgrey"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="10dp"
+                            android:text="FAVORITES"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@id/mainPageDate"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/portfolio_list" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/fav_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fav_title" />
+
+                        <TextView
+                            android:id="@+id/footer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="Powered By tiingo"
+                            android:textStyle="italic"
+                            android:textAlignment="center"
+                            app:layout_constraintTop_toBottomOf="@+id/fav_list"
+                            tools:ignore="MissingConstraints">
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/progress_bar_layout">
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="visible"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/fetch"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Fetching Data"
+            android:layout_below="@id/progress_bar"
+            android:layout_width="wrap_content" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
